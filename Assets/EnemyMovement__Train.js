@@ -2,6 +2,7 @@
 var LeftLimit = -170.0;
 var RightLimit = 130.0;
 var goLeft = false;
+var oldGoLeft = false;
 var countLeft=0;
 var countRight=0;
 var stopTrainGroup=false;
@@ -11,6 +12,7 @@ var currentGT=1;
 var GROUPTYPES=5;
 var timer: float = 50; // set duration time in seconds in the Inspector
 var reset=false;
+var switchT =0;
 
 public function Update(){
 StopGroupType();
@@ -24,6 +26,7 @@ function StopGroupType()
 	{}
 	else {
 		if(countRight<1 || countLeft <1)
+			
 			transform.position += transform.forward * moveSpeed * Time.deltaTime;
 	}
 	if(currentGT>=groupType)
@@ -31,6 +34,7 @@ function StopGroupType()
 	else
 		isGroupType=false;
 	if(isGroupType && transform.position.x >= RightLimit){
+		goLeft=true;
 		transform.eulerAngles.y += 180; 
 		if(timer<0){
 			if(countLeft>1){stopTrainGroup=true;}
@@ -38,6 +42,7 @@ function StopGroupType()
 		}
 	}
 	if(isGroupType && transform.position.x <= LeftLimit){
+		goLeft=false;
 		transform.eulerAngles.y -= 180; 
 		if(timer<0){
 			if(countRight>1){stopTrainGroup=true;}
@@ -45,21 +50,37 @@ function StopGroupType()
 		}
 	}
 
+	oldGoLeft = goLeft;
+
 }
 
 function TimeSplit()
 {
 	timer -= Time.deltaTime;
-	if(timer<0)
+	if(timer<=0)
 	{
+
+		
 		if(currentGT<=3)
 		{
-			currentGT++;
+			
+			
+		
+			Debug.Log(currentGT);
+			
 			if(groupType==currentGT)
 			{
-				timer=30;
-				reset=true;
+				timer=5;
+				currentGT++;
+				
 			}
-		}	
+		}
+		else
+		{
+			timer=5;
+			reset=true;
+		}
+		
+		if(reset){currentGT=1;}
 	}	
 }
