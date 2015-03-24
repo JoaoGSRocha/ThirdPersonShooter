@@ -13,11 +13,18 @@ var GROUPTYPES=5;
 var timer: float = 50; // set duration time in seconds in the Inspector
 var reset=false;
 var switchT =0;
+var enemyTimer : EnemyTypesTimer;
+
 
 public function Update(){
-StopGroupType();
-TimeSplit();
+	StopGroupType();
+	//enemyTimer.TimeSplit();
 
+}
+
+function getGroupType()
+{
+	return groupType;
 }
 
 function StopGroupType()
@@ -25,11 +32,11 @@ function StopGroupType()
 	if(!isGroupType)
 	{}
 	else {
-		if(countRight<1 || countLeft <1)
+		if((countRight<1 || countLeft <1)&& currentGT==groupType)
 			
 			transform.position += transform.forward * moveSpeed * Time.deltaTime;
 	}
-	if(currentGT>=groupType)
+	if(currentGT==groupType)
 		isGroupType=true;
 	else
 		isGroupType=false;
@@ -52,35 +59,4 @@ function StopGroupType()
 
 	oldGoLeft = goLeft;
 
-}
-
-function TimeSplit()
-{
-	timer -= Time.deltaTime;
-	if(timer<=0)
-	{
-
-		
-		if(currentGT<=3)
-		{
-			
-			
-		
-			Debug.Log(currentGT);
-			
-			if(groupType==currentGT)
-			{
-				timer=5;
-				currentGT++;
-				
-			}
-		}
-		else
-		{
-			timer=5;
-			reset=true;
-		}
-		
-		if(reset){currentGT=1;}
-	}	
 }

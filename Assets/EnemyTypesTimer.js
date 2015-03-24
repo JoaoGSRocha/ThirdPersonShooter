@@ -5,13 +5,19 @@ var goLeft = false;
 var countLeft=0;
 var countRight=0;
 var stopTrainGroup=false;
-var groupType=true;
+var groupType=1;
 var currentGT=1;
 var GROUPTYPES=5;
 var timer: float = 50; // set duration time in seconds in the Inspector
 var reset=false;
+var enemy : GameObject[];
+var enemyScript : EnemyMovement__Train;
+function Update(){
+WaitForSeconds(4);
+TimeSplit();
 
-
+}
+/*
 public function StopGroupType()
 {
 	if(groupType==false && transform.position.x >= RightLimit){
@@ -34,22 +40,43 @@ public function StopGroupType()
 		if(!stopTrainGroup && (countRight<1 || countLeft <1))
 			transform.position += transform.forward * moveSpeed * Time.deltaTime;
 	}
-}
+}*/
 
-public function TimeSplit()
+function TimeSplit()
 {
 	timer -= Time.deltaTime;
-	if(timer<0)
+	var enemyGroupType;
+	for(var i : int = 0; i <enemy.Length; i++){
+		enemyScript = enemy[i].GetComponent(EnemyMovement__Train);
+		groupType = enemyScript.getGroupType();
+		
+
+	if(timer<=0)
 	{
-		if(currentGT>3)	currentGT=0;
-		if(currentGT<3)
+
+		
+		if(currentGT<=3)
 		{
-			currentGT++;
+			
+			
+		
+			Debug.Log(currentGT);
+			
 			if(groupType==currentGT)
 			{
-				timer=30;
-				reset=true;
+				timer=5;
+				currentGT++;
+				
 			}
-		}	
+		}
+		else
+		{
+			timer=5;
+			reset=true;
+		}
+		
+		if(reset){currentGT=1;}
+	}
+		Debug.Log(groupType);
 	}	
 }
