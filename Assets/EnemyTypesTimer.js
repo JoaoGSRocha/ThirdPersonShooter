@@ -1,13 +1,18 @@
-﻿var stopTrainGroup=false;
+﻿var moveSpeed = 40.0;
+var LeftLimit = -170.0;
+var RightLimit = 130.0;
+var goLeft = false;
+var countLeft=0;
+var countRight=0;
+var stopTrainGroup=false;
+var groupType=true;
 var currentGT=1;
 var GROUPTYPES=5;
 var timer: float = 50; // set duration time in seconds in the Inspector
 var reset=false;
 
 
-public function StopGroupType(groupType, direction, countLeft, 
-						countRight, transform, moveSpeed,
-						RightLimit, LeftLimit)
+public function StopGroupType()
 {
 	if(groupType==false && transform.position.x >= RightLimit){
 		transform.eulerAngles.y += 180; 
@@ -31,7 +36,7 @@ public function StopGroupType(groupType, direction, countLeft,
 	}
 }
 
-public function TimeSplit(groupType)
+public function TimeSplit()
 {
 	timer -= Time.deltaTime;
 	if(timer<0)
