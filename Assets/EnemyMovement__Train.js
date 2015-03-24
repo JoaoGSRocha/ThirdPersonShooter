@@ -5,7 +5,8 @@ var goLeft = false;
 var countLeft=0;
 var countRight=0;
 var stopTrainGroup=false;
-var groupType=true;
+var groupType=1;
+var isGroupType=true;
 var currentGT=1;
 var GROUPTYPES=5;
 var timer: float = 50; // set duration time in seconds in the Inspector
@@ -19,26 +20,31 @@ TimeSplit();
 
 function StopGroupType()
 {
-	if(groupType==false && transform.position.x >= RightLimit){
+	if(!isGroupType)
+	{}
+	else {
+		if(countRight<1 || countLeft <1)
+			transform.position += transform.forward * moveSpeed * Time.deltaTime;
+	}
+	if(currentGT>=groupType)
+		isGroupType=true;
+	else
+		isGroupType=false;
+	if(isGroupType && transform.position.x >= RightLimit){
 		transform.eulerAngles.y += 180; 
-		groupType = true;
 		if(timer<0){
 			if(countLeft>1){stopTrainGroup=true;}
 			countRight=2;
 		}
 	}
-	if((groupType==true) && (transform.position.x <= LeftLimit)){
+	if(isGroupType && transform.position.x <= LeftLimit){
 		transform.eulerAngles.y -= 180; 
-		groupType = false;
 		if(timer<0){
 			if(countRight>1){stopTrainGroup=true;}
 			countRight=2;
 		}
 	}
-	else {
-		if(!stopTrainGroup && (countRight<1 || countLeft <1))
-			transform.position += transform.forward * moveSpeed * Time.deltaTime;
-	}
+
 }
 
 function TimeSplit()
