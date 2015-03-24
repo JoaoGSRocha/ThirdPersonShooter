@@ -52,8 +52,7 @@ function TimeSplit()
 	timer -= Time.deltaTime;
 	if(timer<0)
 	{
-		if(currentGT>3)	currentGT=0;
-		if(currentGT<3)
+		if(currentGT<=3)
 		{
 			currentGT++;
 			if(groupType==currentGT)
