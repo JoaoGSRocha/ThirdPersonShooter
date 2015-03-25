@@ -6,9 +6,9 @@ var countLeft=0;
 var countRight=0;
 var stopTrainGroup=false;
 var groupType=1;
-var currentGT=1;
+public var currentGT=1;
 var GROUPTYPES=5;
-var timer: float = 50; // set duration time in seconds in the Inspector
+public var timer: float = 50; // set duration time in seconds in the Inspector
 var reset=false;
 var enemy : GameObject[];
 var enemyScript : EnemyMovement__Train;
@@ -42,8 +42,10 @@ public function StopGroupType()
 	}
 }*/
 
-function TimeSplit()
+public function TimeSplit()
 {
+if(reset)
+	reset=false;
 	timer -= Time.deltaTime;
 	var enemyGroupType;
 	for(var i : int = 0; i <enemy.Length; i++){

@@ -18,7 +18,7 @@ var enemyTimer : EnemyTypesTimer;
 
 public function Update(){
 	StopGroupType();
-	//enemyTimer.TimeSplit();
+	enemyTimer.TimeSplit();
 
 }
 
