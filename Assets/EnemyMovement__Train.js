@@ -13,12 +13,14 @@ var GROUPTYPES=5;
 var timer: float = 50; // set duration time in seconds in the Inspector
 var reset=false;
 var switchT =0;
+var turnCounter=0;
 var enemyTimer : EnemyTypesTimer;
+var Trains : Transform[];
 
 
 public function Update(){
 	StopGroupType();
-	enemyTimer.TimeSplit();
+	//enemyTimer.TimeSplit();
 
 }
 
@@ -34,29 +36,65 @@ function StopGroupType()
 	else {
 		if((countRight<1 || countLeft <1)&& currentGT==groupType)
 			
-			transform.position += transform.forward * moveSpeed * Time.deltaTime;
+			Trains[1].position += Trains[1].forward * moveSpeed * Time.deltaTime;
+			Trains[2].position += Trains[1].forward * moveSpeed * Time.deltaTime;
+			Trains[3].position += Trains[1].forward * moveSpeed * Time.deltaTime;
 	}
 	if(currentGT==groupType)
 		isGroupType=true;
 	else
 		isGroupType=false;
-	if(isGroupType && transform.position.x >= RightLimit){
+	if(isGroupType && Trains[1].position.x >= RightLimit){
 		goLeft=true;
-		transform.eulerAngles.y += 180; 
-		if(timer<0){
+		Trains[1].eulerAngles.y += 180; 
+		if(turnCounter>=8){
 			if(countLeft>1){stopTrainGroup=true;}
 			countRight=2;
 		}
+		turnCounter++;
 	}
-	if(isGroupType && transform.position.x <= LeftLimit){
+	if(isGroupType && Trains[1].position.x <= LeftLimit){
 		goLeft=false;
-		transform.eulerAngles.y -= 180; 
-		if(timer<0){
+		Trains[1].eulerAngles.y -= 180; 
+		if(turnCounter>=8){
 			if(countRight>1){stopTrainGroup=true;}
 			countRight=2;
 		}
+		turnCounter++;
 	}
 
 	oldGoLeft = goLeft;
 
+}
+
+public function TimeSplit()
+{
+	if(reset)
+		reset=false;
+		
+		if(turnCounter>=8)
+		{
+
+			
+			if(currentGT<=3)
+			{
+			
+				Debug.Log(currentGT);
+				
+				if(groupType==currentGT)
+				{
+					turnCounter=0;
+					currentGT++;
+					
+				}
+			}
+			else
+			{
+				turnCounter=0;
+				reset=true;
+			}
+			
+			if(reset){currentGT=1;}
+		}
+		Debug.Log(groupType);	
 }

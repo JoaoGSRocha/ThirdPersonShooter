@@ -44,8 +44,8 @@ public function StopGroupType()
 
 public function TimeSplit()
 {
-if(reset)
-	reset=false;
+	if(reset)
+		reset=false;
 	timer -= Time.deltaTime;
 	var enemyGroupType;
 	for(var i : int = 0; i <enemy.Length; i++){
@@ -53,32 +53,30 @@ if(reset)
 		groupType = enemyScript.getGroupType();
 		
 
-	if(timer<=0)
-	{
-
-		
-		if(currentGT<=3)
+		if(timer<=0)
 		{
+
 			
+			if(currentGT<=3)
+			{
 			
-		
-			Debug.Log(currentGT);
-			
-			if(groupType==currentGT)
+				Debug.Log(currentGT);
+				
+				if(groupType==currentGT)
+				{
+					timer=5;
+					currentGT++;
+					
+				}
+			}
+			else
 			{
 				timer=5;
-				currentGT++;
-				
+				reset=true;
 			}
+			
+			if(reset){currentGT=1;}
 		}
-		else
-		{
-			timer=5;
-			reset=true;
-		}
-		
-		if(reset){currentGT=1;}
-	}
 		Debug.Log(groupType);
 	}	
 }
