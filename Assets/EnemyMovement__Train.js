@@ -16,11 +16,11 @@ var switchT =0;
 var turnCounter=0;
 var enemyTimer : EnemyTypesTimer;
 var Trains : Transform[];
-
+var disableTrain : boolean[]; 
 
 public function Update(){
 	StopGroupType();
-	//enemyTimer.TimeSplit();
+	TimeSplit();
 
 }
 
@@ -31,70 +31,73 @@ function getGroupType()
 
 function StopGroupType()
 {
-	if(!isGroupType)
-	{}
-	else {
-		if((countRight<1 || countLeft <1)&& currentGT==groupType)
-			
-			Trains[1].position += Trains[1].forward * moveSpeed * Time.deltaTime;
-			Trains[2].position += Trains[1].forward * moveSpeed * Time.deltaTime;
-			Trains[3].position += Trains[1].forward * moveSpeed * Time.deltaTime;
-	}
-	if(currentGT==groupType)
-		isGroupType=true;
-	else
-		isGroupType=false;
-	if(isGroupType && Trains[1].position.x >= RightLimit){
-		goLeft=true;
-		Trains[1].eulerAngles.y += 180; 
-		if(turnCounter>=8){
-			if(countLeft>1){stopTrainGroup=true;}
-			countRight=2;
+	for(var train : Transform in transform)
+	{
+		if(!isGroupType)
+		{}
+		else {
+			if((countRight<1 || countLeft <1)&& currentGT==groupType)
+				train.position += train.forward * moveSpeed * Time.deltaTime;
 		}
-		turnCounter++;
-	}
-	if(isGroupType && Trains[1].position.x <= LeftLimit){
-		goLeft=false;
-		Trains[1].eulerAngles.y -= 180; 
-		if(turnCounter>=8){
-			if(countRight>1){stopTrainGroup=true;}
-			countRight=2;
+		if(currentGT==groupType)
+			isGroupType=true;
+		else
+			isGroupType=false;
+		if(isGroupType && train.position.x >= RightLimit){
+			goLeft=true;
+			train.eulerAngles.y += 180; 
+			if(turnCounter>=8){
+				if(countLeft>1){stopTrainGroup=true;}
+				countRight=2;
+			}
+			turnCounter++;
 		}
-		turnCounter++;
+		if(isGroupType && train.position.x <= LeftLimit){
+			goLeft=false;
+			train.eulerAngles.y -= 180; 
+			if(turnCounter>=8){
+				if(countRight>1){stopTrainGroup=true;}
+				countRight=2;
+			}
+			turnCounter++;
+		}
+
+		oldGoLeft = goLeft;
 	}
-
-	oldGoLeft = goLeft;
-
 }
 
 public function TimeSplit()
 {
 	if(reset)
-		reset=false;
+	reset=false;
+	for(var i : int =0; i<6; i ++)
+	{
 		
-		if(turnCounter>=8)
-		{
+	}
+	if(turnCounter>=8)
+	{
 
+		
+		if(currentGT<=3)
+		{
+		
+			Debug.Log(currentGT);
 			
-			if(currentGT<=3)
-			{
-			
-				Debug.Log(currentGT);
-				
-				if(groupType==currentGT)
-				{
-					turnCounter=0;
-					currentGT++;
-					
-				}
-			}
-			else
+			if(groupType==currentGT)
 			{
 				turnCounter=0;
-				reset=true;
+				currentGT++;
+				
 			}
-			
-			if(reset){currentGT=1;}
 		}
-		Debug.Log(groupType);	
+		else
+		{
+			turnCounter=0;
+			reset=true;
+		}
+		
+		if(reset){currentGT=1;}
+	}
+
+	Debug.Log(groupType);	
 }
