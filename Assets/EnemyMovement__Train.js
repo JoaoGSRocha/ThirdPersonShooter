@@ -72,7 +72,7 @@ public function TimeSplit()
 	reset=false;
 	for(var i : int =0; i<6; i ++)
 	{
-		
+		//Trains[i].GetComponents();
 	}
 	if(turnCounter>=8)
 	{

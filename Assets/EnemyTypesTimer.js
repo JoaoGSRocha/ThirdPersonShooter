@@ -12,11 +12,13 @@ public var timer: float = 50; // set duration time in seconds in the Inspector
 var reset=false;
 var enemy : GameObject[];
 var enemyScript : EnemyMovement__Train;
-function Update(){
-WaitForSeconds(4);
-TimeSplit();
 
+function Update(){
+	WaitForSeconds(4);
+	TimeSplit();
 }
+
+
 /*
 public function StopGroupType()
 {
