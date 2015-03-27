@@ -5,7 +5,26 @@ var turnSpeed = 1.0;
 var enemy : EnemyMovement__Train;
 var prefab : Transform;
 
-//var direction = transform.forward;
+var incrementTime = .3; 
+var incrementBy = 1; 
+private var counter = 0;
+
+var target : GameObject;
+
+
+var addcoord =0;
+
+function Start()
+{
+    InvokeRepeating("SpawnObject", 2, 1);
+}
+    
+function SpawnObject()
+{
+	addcoord+=20;
+	Instantiate(target, new Vector3(40+addcoord, 42, 0), Quaternion.identity);
+}
+
 function OnCollisionEnter (col : Collision)
 {
 	if(col.gameObject.name == "TrainEnemy1")
@@ -56,20 +75,21 @@ function WaitAndPrint () {
 		}
 	print ("WaitAndPrint "+ Time.time);
 }
-function FixedUpdate () {
-	if(Input.GetButton("W"))
-	{
-		// Instantiates 10 copies of prefab each 2 units apart from each other
 
-		
-	}
+function CreateTrains() {
+	for (var i : int = 0;i < 10; i++) {		yield WaitForSeconds (.1f);
+			Instantiate (prefab, Vector3(i * 20.0, 100.0, 0), Quaternion.identity);
+
+    }
 }
-
 function Update () {
-
 	if(Input.GetButton("W"))
 	{	
+	
+		
+		//CreateTrains();
 		transform.position += transform.forward * moveSpeed * Time.deltaTime;
+		Debug.Log(incrementTime);
 	}
 	
 	if(Input.GetButton("S"))

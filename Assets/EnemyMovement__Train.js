@@ -18,6 +18,9 @@ var enemyTimer : EnemyTypesTimer;
 var Trains : Transform[];
 var disableTrain : boolean[]; 
 
+var target : GameObject;
+    
+
 public function Update(){
 	StopGroupType();
 	TimeSplit();
@@ -28,6 +31,7 @@ function getGroupType()
 {
 	return groupType;
 }
+
 
 function StopGroupType()
 {
