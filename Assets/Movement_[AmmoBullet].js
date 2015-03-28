@@ -2,7 +2,7 @@
 
 var moveSpeed = 1.0;
 var turnSpeed = 1.0;
-var enemy : EnemyMovement__Train;
+var enemy : TrainChild;
 var prefab : Transform;
 
 var incrementTime = .3; 
@@ -13,7 +13,7 @@ function OnCollisionEnter (col : Collision)
 	if(col.gameObject.tag == "TrainEnemy")
 	{
 		Destroy(col.gameObject);
-	 	enemy = col.gameObject.GetComponent(EnemyMovement__Train);
+	 	enemy = col.gameObject.GetComponent(TrainChild);
 	 	enemy.enabled = false;
 	}
 	
@@ -25,19 +25,19 @@ function OnCollisionEnter (col : Collision)
 	if(col.gameObject.name == "GameLimitBottom")
 	{
 		Destroy(col.gameObject);
-	 	enemy = col.gameObject.GetComponent(EnemyMovement__Train);
+	 	enemy = col.gameObject.GetComponent(TrainChild);
 	 	enemy.enabled = false;
 	}
 	if(col.gameObject.name == "GameLimitRight")
 	{
 		Destroy(col.gameObject);
-	 	enemy = col.gameObject.GetComponent(EnemyMovement__Train);
+	 	enemy = col.gameObject.GetComponent(TrainChild);
 	 	enemy.enabled = false;
 	}
 	if(col.gameObject.name == "GameLimitLeft")
 	{
 		Destroy(col.gameObject);
-	 	enemy = col.gameObject.GetComponent(EnemyMovement__Train);
+	 	enemy = col.gameObject.GetComponent(TrainChild);
 	 	enemy.enabled = false;
 	}
 	

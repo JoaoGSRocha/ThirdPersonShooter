@@ -1,156 +1,118 @@
-﻿var moveSpeed = 40.0;
-var LeftLimit = -170.0;
-var RightLimit = 130.0;
-var goLeft = false;
-var oldGoLeft = false;
-var countLeft=0;
-var countRight=0;
-var stopTrainGroup=false;
-var groupType=1;
-var isGroupType=true;
-var currentGT=1;
-var GROUPTYPES=5;
-var timer: float = 50; // set duration time in seconds in the Inspector
-var reset=false;
-var switchT =0;
-var turnCounter=0;
-var enemyTimer : EnemyTypesTimer;
-var Trains : Transform[];
-var disableTrain : boolean[]; 
+﻿var enemyTimer : EnemyTypesTimer;
 
 var target : GameObject;
+var target2 : GameObject;
+var target3 : GameObject;
+var target4 : GameObject;
+var target5 : GameObject;
+var target6 : GameObject;
+
 
 var addcoord=0;
 
-var addcoord2=0;
-
-var addcoord3=0;
-
-var addcoord4=0;
-
-var addcoord5=0;
+private var row2ndcoord = 150;
+private var row3rdcoord = 215;
+private var row4thcoord = 276;
+private var row5thcoord = 307;
 
 function Start()
 {
-    InvokeRepeating("SpawnObject",  10, 5);
-    InvokeRepeating("SpawnObject2", 30, 5);
-    InvokeRepeating("SpawnObject3", 100, 5);
-    InvokeRepeating("SpawnObject4", 100, 5);
-	InvokeRepeating("SpawnObject5", 150, 5);
+    InvokeRepeating("SpawnObject",  5, 15);
+    InvokeRepeating("SpawnObject2", 10, 20);
+    InvokeRepeating("SpawnObject3", 20, 30);
+    InvokeRepeating("SpawnObject4", 30, 45);
+	InvokeRepeating("SpawnObject5", 50, 30);
         
 }
     
 function SpawnObject()
 {
 	addcoord+=20;
-	Instantiate(target, new Vector3(-38+addcoord,  -11, 49), Quaternion.Euler(0, 90, 0));
+	for(var i : int=0; i<=5; i++)
+	{
+		if(i==1)
+			Instantiate(target, new Vector3(-138+addcoord,  -11, 49), Quaternion.Euler(0, 90, 0));
+		if(i==2)
+			Instantiate(target2, new Vector3(-180+addcoord, -11, row2ndcoord), Quaternion.Euler(0, 90, 0));
+		if(i==3)
+			Instantiate(target3, new Vector3(-218+addcoord,  -11, row3rdcoord), Quaternion.Euler(0, 90, 0));
+		if(i==4)
+			Instantiate(target4, new Vector3(-258+addcoord,  -11, row4thcoord), Quaternion.Euler(0, 90, 0));
+		if(i==5)
+			Instantiate(target5, new Vector3(-338+addcoord, -11, row5thcoord), Quaternion.Euler(0, 90, 0));
+	}
 }
 
 function SpawnObject2()
 {
-	addcoord2+=20;
-	Instantiate(target, new Vector3(-38+addcoord2, -11, 102), Quaternion.Euler(0, 90, 0));
-}    
+	addcoord+=20;
+	for(var i : int=0; i<=5; i++)
+	{
+		if(i==1)
+			Instantiate(target, new Vector3(-138+addcoord,  -11, 49), Quaternion.Euler(0, 90, 0));
+		if(i==2)
+			Instantiate(target2, new Vector3(-180+addcoord, -11, row2ndcoord), Quaternion.Euler(0, 90, 0));
+		if(i==3)
+			Instantiate(target3, new Vector3(-218+addcoord,  -11, row3rdcoord), Quaternion.Euler(0, 90, 0));
+		if(i==4)
+			Instantiate(target4, new Vector3(-258+addcoord,  -11, row4thcoord), Quaternion.Euler(0, 90, 0));
+		if(i==5)
+			Instantiate(target5, new Vector3(-338+addcoord, -11, row5thcoord), Quaternion.Euler(0, 90, 0));
+	}
+} 
 
 function SpawnObject3()
 {
-	addcoord3+=20;
-	Instantiate(target, new Vector3(-38+addcoord3,  -11, 49), Quaternion.Euler(0, 90, 0));
+	addcoord+=20;
+	for(var i : int=0; i<=5; i++)
+	{
+		if(i==1)
+			Instantiate(target, new Vector3(-138+addcoord,  -11, 49), Quaternion.Euler(0, 90, 0));
+		if(i==2)
+			Instantiate(target2, new Vector3(-180+addcoord, -11, row2ndcoord), Quaternion.Euler(0, 90, 0));
+		if(i==3)
+			Instantiate(target3, new Vector3(-218+addcoord,  -11, row3rdcoord), Quaternion.Euler(0, 90, 0));
+		if(i==4)
+			Instantiate(target4, new Vector3(-258+addcoord,  -11, row4thcoord), Quaternion.Euler(0, 90, 0));
+		if(i==5)
+			Instantiate(target5, new Vector3(-338+addcoord, -11, row5thcoord), Quaternion.Euler(0, 90, 0));
+	}
 }
 
 function SpawnObject4()
 {
-	addcoord4+=20;
-	Instantiate(target, new Vector3(-38+addcoord4,  -11, 49), Quaternion.Euler(0, 90, 0));
+	addcoord+=20;
+	for(var i : int=0; i<=5; i++)
+	{
+		if(i==1)
+			Instantiate(target, new Vector3(-138+addcoord,  -11, 49), Quaternion.Euler(0, 90, 0));
+		if(i==2)
+			Instantiate(target2, new Vector3(-180+addcoord, -11, row2ndcoord), Quaternion.Euler(0, 90, 0));
+		if(i==3)
+			Instantiate(target3, new Vector3(-218+addcoord,  -11, row3rdcoord), Quaternion.Euler(0, 90, 0));
+		if(i==4)
+			Instantiate(target4, new Vector3(-258+addcoord,  -11, row4thcoord), Quaternion.Euler(0, 90, 0));
+		if(i==5)
+			Instantiate(target5, new Vector3(-338+addcoord, -11, row5thcoord), Quaternion.Euler(0, 90, 0));
+	}
 }
 
 function SpawnObject5()
 {
-	addcoord5+=20;
-	Instantiate(target, new Vector3(-38+addcoord5, -11, 49), Quaternion.Euler(0, 90, 0));
-}
-
-public function Update(){
-	StopGroupType();
-	TimeSplit();
-
-}
-
-function getGroupType()
-{
-	return groupType;
-}
-
-
-function StopGroupType()
-{
-	for(var train : Transform in transform)
+	addcoord+=20;
+	for(var i : int=0; i<=5; i++)
 	{
-		if(!isGroupType)
-		{}
-		else {
-			if((countRight<1 || countLeft <1)&& currentGT==groupType)
-				train.position += train.forward * moveSpeed * Time.deltaTime;
-		}
-		if(currentGT==groupType)
-			isGroupType=true;
-		else
-			isGroupType=false;
-		if(isGroupType && train.position.x >= RightLimit){
-			goLeft=true;
-			train.eulerAngles.y += 180; 
-			if(turnCounter>=8){
-				if(countLeft>1){stopTrainGroup=true;}
-				countRight=2;
-			}
-			turnCounter++;
-		}
-		if(isGroupType && train.position.x <= LeftLimit){
-			goLeft=false;
-			train.eulerAngles.y -= 180; 
-			if(turnCounter>=8){
-				if(countRight>1){stopTrainGroup=true;}
-				countRight=2;
-			}
-			turnCounter++;
-		}
-
-		oldGoLeft = goLeft;
+		if(i==1)
+			Instantiate(target, new Vector3(-138+addcoord,  -11, 49), Quaternion.Euler(0, 90, 0));
+		if(i==2)
+			Instantiate(target2, new Vector3(-180+addcoord, -11, row2ndcoord), Quaternion.Euler(0, 90, 0));
+		if(i==3)
+			Instantiate(target3, new Vector3(-218+addcoord,  -11, row3rdcoord), Quaternion.Euler(0, 90, 0));
+		if(i==4)
+			Instantiate(target4, new Vector3(-258+addcoord,  -11, row4thcoord), Quaternion.Euler(0, 90, 0));
+		if(i==5)
+			Instantiate(target5, new Vector3(-338+addcoord, -11, row5thcoord), Quaternion.Euler(0, 90, 0));
 	}
 }
 
-public function TimeSplit()
-{
-	if(reset)
-	reset=false;
-	for(var i : int =0; i<6; i ++)
-	{
-		//Trains[i].GetComponents();
-	}
-	if(turnCounter>=8)
-	{
 
-		
-		if(currentGT<=3)
-		{
-		
-			Debug.Log(currentGT);
-			
-			if(groupType==currentGT)
-			{
-				turnCounter=0;
-				currentGT++;
-				
-			}
-		}
-		else
-		{
-			turnCounter=0;
-			reset=true;
-		}
-		
-		if(reset){currentGT=1;}
-	}
-
-	Debug.Log(groupType);	
-}

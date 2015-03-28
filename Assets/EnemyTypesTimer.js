@@ -44,23 +44,6 @@ public function StopGroupType()
 	}
 }*/
 
-var target : GameObject;
-
-
-var addcoord =0;
-
-function Start()
-{
-    InvokeRepeating("SpawnObject", 2, 1);
-}
-    
-function SpawnObject()
-{
-	addcoord+=20;
-	Instantiate(target, new Vector3(40+addcoord, 42, 0), Quaternion.identity);
-}
-
-
 public function TimeSplit()
 {
 	if(reset)
