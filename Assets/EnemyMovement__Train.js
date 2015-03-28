@@ -19,7 +19,56 @@ var Trains : Transform[];
 var disableTrain : boolean[]; 
 
 var target : GameObject;
+
+var addcoord=0;
+
+var addcoord2=0;
+
+var addcoord3=0;
+
+var addcoord4=0;
+
+var addcoord5=0;
+
+function Start()
+{
+    InvokeRepeating("SpawnObject",  10, 5);
+    InvokeRepeating("SpawnObject2", 30, 5);
+    InvokeRepeating("SpawnObject3", 100, 5);
+    InvokeRepeating("SpawnObject4", 100, 5);
+	InvokeRepeating("SpawnObject5", 150, 5);
+        
+}
     
+function SpawnObject()
+{
+	addcoord+=20;
+	Instantiate(target, new Vector3(-38+addcoord,  -11, 49), Quaternion.Euler(0, 90, 0));
+}
+
+function SpawnObject2()
+{
+	addcoord2+=20;
+	Instantiate(target, new Vector3(-38+addcoord2, -11, 102), Quaternion.Euler(0, 90, 0));
+}    
+
+function SpawnObject3()
+{
+	addcoord3+=20;
+	Instantiate(target, new Vector3(-38+addcoord3,  -11, 49), Quaternion.Euler(0, 90, 0));
+}
+
+function SpawnObject4()
+{
+	addcoord4+=20;
+	Instantiate(target, new Vector3(-38+addcoord4,  -11, 49), Quaternion.Euler(0, 90, 0));
+}
+
+function SpawnObject5()
+{
+	addcoord5+=20;
+	Instantiate(target, new Vector3(-38+addcoord5, -11, 49), Quaternion.Euler(0, 90, 0));
+}
 
 public function Update(){
 	StopGroupType();

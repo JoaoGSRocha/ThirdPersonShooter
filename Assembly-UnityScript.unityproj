@@ -54,6 +54,7 @@
      <Compile Include="Assets\ProjectileScript.js" />
      <Compile Include="Assets\ShootScript.js" />
      <Compile Include="Assets\SimpleFPSWalker.js" />
+     <Compile Include="Assets\TrainChild.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

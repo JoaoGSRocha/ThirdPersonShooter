@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{E3F2CBE3-AFD6-9E77-7483-590F3A036BDE}</ProjectGuid>
+	<ProjectGuid>{A79D9CEA-E14F-AEDD-A3B5-7EAD4B2E3EFB}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-UnityScript</AssemblyName>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,15 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CameraBehavior.js" />
-     <Compile Include="Assets\EnemyMovement__Train.js" />
-     <Compile Include="Assets\EnemyTypesTimer.js" />
-     <Compile Include="Assets\Mouselook.js" />
-     <Compile Include="Assets\Movement_[AmmoBullet].js" />
-     <Compile Include="Assets\ProjectileScript.js" />
-     <Compile Include="Assets\ShootScript.js" />
-     <Compile Include="Assets\SimpleFPSWalker.js" />
-     <Compile Include="Assets\TrainChild.js" />
+     <Compile Include="Assets\TrainChild.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
