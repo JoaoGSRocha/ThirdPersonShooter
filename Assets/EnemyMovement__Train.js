@@ -25,7 +25,7 @@ function Start()
     
 function SpawnObject()
 {
-	if(addcoord<=20){
+	if(addcoord<=10){
 		addcoord+=1.5;
 		for(var i : int=0; i<=5; i++)
 		{
@@ -41,11 +41,12 @@ function SpawnObject()
 				Instantiate(target5, new Vector3(-198, -11, row5thcoord+addcoord), Quaternion.Euler(0, 90, 0));
 		}
 	}
+	Debug.Log(addcoord);
 }
 
 function SpawnObject2()
 {
-	if(addcoord<=20){
+	if(addcoord<=10){
 		addcoord+=1.5;
 		for(var i : int=0; i<=5; i++)
 		{
@@ -65,7 +66,7 @@ function SpawnObject2()
 
 function SpawnObject3()
 {
-	if(addcoord<=20){
+	if(addcoord<=10){
 		addcoord+=1.5;
 		for(var i : int=0; i<=5; i++)
 		{
@@ -85,7 +86,7 @@ function SpawnObject3()
 
 function SpawnObject4()
 {
-	if(addcoord<=20){
+	if(addcoord<=10){
 		addcoord+=1.5;
 		for(var i : int=0; i<=5; i++)
 		{
@@ -105,7 +106,7 @@ function SpawnObject4()
 
 function SpawnObject5()
 {
-	if(addcoord<=20){
+	if(addcoord<=10){
 		addcoord+=1.5;
 		for(var i : int=0; i<=5; i++)
 		{

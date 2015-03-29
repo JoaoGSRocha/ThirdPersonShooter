@@ -51,7 +51,6 @@ function StopGroupType()
 			}
 			turnCounter++;
 		}
-		Debug.Log("Turn Counter: " +turnCounter);
 	}
 	else
 	{
