@@ -1,22 +1,5 @@
-﻿var moveSpeed = 40.0;
-var LeftLimit = -170.0;
-var RightLimit = 130.0;
-var goLeft = false;
-var oldGoLeft = false;
-var countLeft=-180;
-var countRight=180;
-var stopTrainGroup=false;
-var groupType=1;
-var isGroupType=true;
-var timer: float = 50; // set duration time in seconds in the Inspector
-var reset=false;
-var switchT =0;
-var dot=3;
+﻿var dot=3;
 var myGUIText : GUIText;
-private var turnCounter=0;
-
-
-var addcoord=0;
 
 function Start()
 {
