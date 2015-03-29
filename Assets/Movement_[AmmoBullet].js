@@ -7,8 +7,10 @@ var incrementBy = 1;
 private var counter = 0;
 var myGUIText : GUIText;
 var newText = "";
+var myGUIText2 : GUIText;
+var newText2 = "";
 var touchBot=true;
-
+var lifes=5;
 
 function OnCollisionEnter (col : Collision)
 {
@@ -17,6 +19,8 @@ function OnCollisionEnter (col : Collision)
 		Destroy(col.gameObject);
 	 	enemy = col.gameObject.GetComponent(TrainChild);
 	 	enemy.enabled = false;
+		lifes--;
+		myGUIText2.text = lifes.ToString();
 	}
 	
 	//Game Physical Limits
@@ -41,7 +45,7 @@ function OnCollisionEnter (col : Collision)
 	}
 	if(col.gameObject.name == "GameLimitRight")
 	{
-		transform.eulerAngles.y += 180;
+		transform.eulerAngles.y -= 180;
 	}
 	if(col.gameObject.name == "GameLimitLeft")
 	{
@@ -72,5 +76,7 @@ function Update () {
 		transform.eulerAngles.y += turnSpeed * Time.deltaTime;
 	}
 	
+	if(lifes<=0)
+		Application.LoadLevel("Menu");
 
 }

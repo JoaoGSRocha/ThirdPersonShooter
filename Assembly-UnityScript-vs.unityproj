@@ -49,6 +49,7 @@
      <Compile Include="Assets\CameraBehavior.js" />
      <Compile Include="Assets\EnemyMovement__Train.js" />
      <Compile Include="Assets\EnemyTypesTimer.js" />
+     <Compile Include="Assets\GameOver.js" />
      <Compile Include="Assets\Mouselook.js" />
      <Compile Include="Assets\Movement_[AmmoBullet].js" />
      <Compile Include="Assets\ProjectileScript.js" />
