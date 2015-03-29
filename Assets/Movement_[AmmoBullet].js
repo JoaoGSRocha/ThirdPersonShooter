@@ -76,7 +76,10 @@ function Update () {
 		transform.eulerAngles.y += turnSpeed * Time.deltaTime;
 	}
 	
-	if(lifes<=0)
+	if(goalPoints>=6)
 		Application.LoadLevel("Menu");
+		
+	if(lifes<=0)
+		Application.LoadLevel("WinMenu");
 
 }
