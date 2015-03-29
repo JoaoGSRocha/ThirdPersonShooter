@@ -51,7 +51,6 @@ function Update () {
 	{	
 		//CreateTrains();
 		transform.position += transform.forward * moveSpeed * Time.deltaTime;
-		Debug.Log(incrementTime);
 	}
 	
 	if(Input.GetButton("S"))
