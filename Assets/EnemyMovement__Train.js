@@ -41,7 +41,6 @@ function SpawnObject()
 				Instantiate(target5, new Vector3(-198, -11, row5thcoord+addcoord), Quaternion.Euler(0, 90, 0));
 		}
 	}
-	Debug.Log(addcoord);
 }
 
 function SpawnObject2()
