@@ -12,13 +12,13 @@ var timer: float = 50; // set duration time in seconds in the Inspector
 var reset=false;
 var switchT =0;
 private var turnCounter=0;
-
-
+public var lifes=5;
+var myGUIText : GUIText;
 var addcoord=0;
 
 function Start()
 {
-   // InvokeRepeating("SpawnObject",  10, 5);
+   myGUIText=GameObject.Find("Lifes").guiText;
 }
 
 public function Update(){

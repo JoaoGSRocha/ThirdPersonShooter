@@ -10,7 +10,7 @@ var newText = "";
 var myGUIText2 : GUIText;
 var newText2 = "";
 var touchBot=true;
-var lifes=5;
+public var lifes=5;
 
 function OnCollisionEnter (col : Collision)
 {
@@ -77,9 +77,9 @@ function Update () {
 	}
 	
 	if(goalPoints>=6)
-		Application.LoadLevel("Menu");
+		Application.LoadLevel("WinMenu");
 		
 	if(lifes<=0)
-		Application.LoadLevel("WinMenu");
+		Application.LoadLevel("Menu");
 
 }
