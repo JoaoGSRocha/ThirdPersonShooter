@@ -1,13 +1,15 @@
-﻿#pragma strict 
-
-var moveSpeed = 1.0;
+﻿var moveSpeed = 1.0;
 var turnSpeed = 1.0;
-var enemy : TrainChild;
 var prefab : Transform;
-
+var goalPoints = 0;
 var incrementTime = .3; 
 var incrementBy = 1; 
 private var counter = 0;
+var myGUIText : GUIText;
+var newText = "";
+var touchBot=true;
+
+
 function OnCollisionEnter (col : Collision)
 {
 	if(col.gameObject.tag == "TrainEnemy")
@@ -20,31 +22,33 @@ function OnCollisionEnter (col : Collision)
 	//Game Physical Limits
 	if(col.gameObject.name == "GameLimitTop")
 	{
-		Destroy(col.gameObject);
-	}
+		if(touchBot)
+		{
+			goalPoints++;
+			myGUIText.text = goalPoints.ToString();
+			Debug.Log(goalPoints);
+			Debug.Log(touchBot);
+		}
+		transform.eulerAngles.y += 180;
+		touchBot = false;
+ 	}
 	if(col.gameObject.name == "GameLimitBottom")
-	{
-		Destroy(col.gameObject);
-	 	enemy = col.gameObject.GetComponent(TrainChild);
-	 	enemy.enabled = false;
+	{ 		
+		touchBot=true;
+		transform.eulerAngles.y += 180;
+		Debug.Log(touchBot);
+
 	}
 	if(col.gameObject.name == "GameLimitRight")
 	{
-		Destroy(col.gameObject);
-	 	enemy = col.gameObject.GetComponent(TrainChild);
-	 	enemy.enabled = false;
+		transform.eulerAngles.y += 180;
 	}
 	if(col.gameObject.name == "GameLimitLeft")
 	{
-		Destroy(col.gameObject);
-	 	enemy = col.gameObject.GetComponent(TrainChild);
-	 	enemy.enabled = false;
+		transform.eulerAngles.y += 180;
 	}
 	
 }
-
-
-
 
 function Update () {
 	if(Input.GetButton("W"))
